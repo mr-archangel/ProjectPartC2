@@ -1,0 +1,330 @@
+''' Name: Michael Pietroboni
+Date: 3/25/2023
+Assignment: ProjectPartB
+Pseudocode:(when needed)
+'''
+
+class Restaurant:
+    """
+    Description: A class to represent a restaurant
+
+    Attributes:
+    name (str): the name of the restaurant
+    size (str): the size of the restaurant
+    owner (str): the owner of the restaurant
+    address (str): the address of the restaurant
+
+    Methods:
+    createMenu(self): creating a Menu
+    createLocation(self): creating a location
+    """
+    #attributes
+    name = str
+    size = str
+    owner = str
+    address = str
+
+    #constructors
+    def __init__(self, name: str, size: str, owner: str, address: str):
+        #initialize instance variables
+        self.name = name
+        self.size = size
+        self.owner = owner
+        self.address = address
+
+    #getters
+    def getName(self):
+        return self._name
+    def getSize(self):
+        return self._size
+    def getOwner(self):
+        return self._owner
+    def getAddress(self):
+        return self._address
+
+    #setters
+    def setName(self, name):
+        self._name = name
+    def setSize(self, size):
+        self._size = size
+    def setOwner(self, owner):
+        self._owner = owner
+    def setAddress(self, address):
+        self._address = address
+
+    #methods
+    def createMenu(self):
+        print('Create a menu')
+        while True:
+            item_name = input("Enter an item name or type 'done' to exit: ")
+            if item_name.lower() == "done":
+                break
+            item_price = input(f"Enter the price for {item_name}: ")
+            self.menu[item_name] = item_price
+        print("Menu created!")
+    def createLocation(self):
+        print('creating location...')
+    def __str__(self):
+        return f'{self._name} is a {self._size} restaurant. {self._owner} is the owner. The address is {self._address}.'
+
+class Menu:
+    """
+    Description: A class to represent a Menu, inherits from the Restaurant class
+
+    Attributes:
+     item(str): an item on the menu
+     spiceLevel(str): the spice level of an item on the menu
+     price(float): the price of an item in the menu
+
+
+    Methods:
+        def updatePrice(self): updating a price
+        def updateSpiceLevel(self): updating a spice level
+    """
+    #attributes
+    _item = str
+    _spiceLevel = str
+    _price = float
+    #constructors
+    def __init__(self, item: str, spiceLevel: str, price: float, name: str, size: str, owner: str, address: str):
+        super().__init__(name, size, owner, address)
+        # initialize instance variables
+        self._item = item
+        self._spiceLevel = spiceLevel
+        self._price = price
+
+    #getters
+    def getItem(self):
+        return self._item
+    def getSpiceLevel(self):
+        return self._spiceLevel
+    def getPrice(self):
+        return self._price
+
+    #setters
+    def setItem(self, item):
+        self._item = item
+    def setSpiceLevel(self, spiceLevel):
+        self._spiceLevel = spiceLevel
+    def setPrice(self, price):
+        self._price = price
+
+    #methods
+    def updatePrice(self):
+        print('updating price...')
+    def updateSpiceLevel(self):
+        print('updating spice level...')
+    def __str__(self):
+        return f'{self._item} is ${self._price} and has a spice level of {self._spiceLevel}.'
+
+class Location:
+    """
+    Description: A class to represent a Location, inherits from the Restaurant class
+
+    Attributes:
+     country(str): a country
+     state(str): a state
+     city(str): a city
+
+
+    Methods:
+    def displayAddress(self): displaying an address
+    def updateAddress(self): updating an address
+    """
+    #attributes
+    country = str
+    state = str
+    city = str
+    #constructors
+    def __init__(self, country: str, state: str, city: str, name: str, size: str, owner: str, address: str):
+        super().__init__(name, size, owner, address)
+        #initialize instance variables
+        self.country = country
+        self.state = state
+        self.city = city
+    #getters
+    def getCountry(self):
+        return self._country
+    def getState(self):
+        return self._state
+    def getCity(self):
+        return self._city
+
+    #setters
+    def setCountry(self, country):
+        self._country = country
+    def setState(self, state):
+        self._state = state
+    def setCity(self, city):
+        self._city = city
+
+    #methods
+    def displayAddress(self):
+        print('displaying address...')
+    def updateAddress(self):
+        print('updating address...')
+    def __str__(self):
+        return f'The restaurant is located in {self._city}, {self._state} {self._country}.'
+
+class Customer:
+    """
+    Description: A class to represent a Customer, inherits from the Restaurant class
+
+    Attributes:
+     custName(str): the customer's name
+     custAge(int): the customer's age
+     favFood(str):  the customer's favorite food
+
+    Methods:
+    def viewMenu(self): viewing the menu
+    def placeOrder(self): placing an order
+    """
+    #attributes
+    _custName = str
+    _custAge = int
+    _favFood = str
+
+    #constructors
+    def __init__(self, custName: str, custAge: int, favFood: str, name: str, size: str, owner: str, address: str):
+        super().__init__()
+        # initialize instance variables
+        self._custName = custName
+        self._custAge = custAge
+        self._favFood = favFood
+
+    #getters
+    def getCustName(self):
+        return self._custName
+    def getCustAge(self):
+        return self._custAge
+    def getFavFood(self):
+        return self._favFood
+
+    #setters
+    def setCustName(self, custName):
+        self._custName = custName
+    def setCustAge(self, custAge):
+        self._custAge = custAge
+    def setFavFood(self, favFood):
+        self._favFood = favFood
+
+    #methods
+    def viewMenu(self):
+        print('viewing menu...')
+    def placeOrder(self):
+        print('placing order...')
+    def __str__(self):
+        return f'{self._custName} is {self._custAge} years old and {self._favFood} is their favorite food.'
+
+class Admin:
+    """
+    Description: A class to represent an Admin, inherits from the Restaurant class
+
+    Attributes:
+     adminName(str): admin name
+     andminAge(int): admin age
+     andminID(int):  admin ID
+
+
+    Methods:
+    def addMenuItem(self): adding an item to the menu
+    def removeMenuItem(self): removing an item from the menu
+    """
+    #attributes
+    _adminName = str
+    _adminAge = int
+    _adminID = int
+
+    #constructors
+    def __init__(self, adminName: str, adminAge: int, adminID: int, name: str, size: str, owner: str, address: str):
+        super().__init__(name, size, owner, address)
+        # initialize instance variables
+        self._adminName = adminName
+        self._adminAge = adminAge
+        self._adminID = adminID
+
+    #getters
+    def getAdminName(self):
+        return self._adminName
+    def getAdminAge(self):
+        return self._adminAge
+    def getAdminID(self):
+        return self._adminID
+
+    #setters
+    def setAdminName(self, adminName):
+        self._adminName = adminName
+    def setAdminAge(self, adminAge):
+        self._adminAge = adminAge
+    def setAdminID(self, adminID):
+        self._adminID = adminID
+
+    #methods
+    def addMenuItem(self):
+        print('adding item...')
+    def removeMenuItem(self):
+        print('removing item...')
+    def __str__(self):
+        return f'{self._adminName} is {self._adminAge} years old and {self._adminID} is their adminID.'
+
+#get user inputs for attributes
+print("Welcome to the restaurant management system!")
+
+try:
+    name = input('Enter the name of the restaurant: ')
+    size = input('Enter the size of the restaurant (small, medium, large): ')
+    owner = input('Enter the owner of the restaurant: ')
+    address = input('Enter the address of the restaurant: ')
+    restaurant = Restaurant(name, size, owner, address)
+
+    #gets the role input from the user
+    role = input('Are you a customer or an admin? ')
+    if role.lower() == 'customer':
+        try:
+            custName = input('Enter your name: ')
+            custAge = int(input('Enter your age: '))
+            favFood = input('Enter your favorite food: ')
+            customer = Customer(custName, custAge, favFood, name, size, owner, address)
+
+            print('Customer Menu')
+            print('1. View Menu')
+            print('2. Place Order')
+            try:
+                choice = int(input('Enter your choice from the menu: '))
+                if choice == 1:
+                    customer.viewMenu()
+                elif choice == 2:
+                    customer.placeOrder()
+                else:
+                    print('Invalid choice.')
+            except ValueError:
+                print('Invalid input. Please enter a valid number.')
+        except ValueError:
+            print('Invalid input. Please enter a valid name, age, and favorite food.')
+
+    elif role.lower() == 'admin':
+        try:
+            country = input('Enter the country the restaurant is in: ')
+            state = input('Enter the state the restaurant is in: ')
+            city = input('Enter the city the restaurant is in: ')
+            location = Location(country, state, city, name, size, owner, address)
+
+            print('Admin Menu')
+            print('1. Create Menu')
+            print('2. Create Location')
+            try:
+                choice = int(input('Enter your choice from the menu: '))
+                if choice == 1:
+                    restaurant.createMenu()
+                elif choice == 2:
+                    location.createLocation()
+                else:
+                    print('Invalid choice.')
+            except ValueError:
+                print('Invalid input. Please enter a valid number.')
+        except ValueError:
+            print('Invalid input. Please enter a valid country, state, and city.')
+    else:
+        print('Invalid role.')
+except ValueError:
+    print('Invalid input. Please enter a valid name and size for the restaurant.')
